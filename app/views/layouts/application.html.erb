@@ -6,16 +6,16 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link rel="icon" href="../../favicon.ico">
 
-	 	<title>Nuggalopes</title>
+	 	<title>Nuggalopes and Friends</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 
 		<!-- Bootstrap -->
-    	<link href="/assets/bootstrap.min.css" media="all" rel="stylesheet">
+    	<link href="vendor/assets/stylesheets/bootstrap.min.css" media="all" rel="stylesheet">
 
     	<!-- Custom styles for this template -->
-    	<link href="custom.css" rel="stylesheet">
+    	<link href="app/assets/stylesheets/custom.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -29,10 +29,10 @@
 									<a href="#" class="dropdown=toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="/#">Home</a></li>
-										<li><a href="#">View Cart</a></li>
+										<li class="cart-text"><%= render 'layouts/cart_text' %></li>
 										<li class="divider"></li>
 										<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-										<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+										<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
 									</ul>
 								</li>
 							<% else %>
@@ -47,14 +47,13 @@
 		</nav>
 
 		<div class="container">
-
 			<%= yield %>
-
-			<div class="starter-template">
-				<% if user_signed_in? %>
-				  <small>You're logged in as <strong><%= current_user.email %></strong>.</small>
-				<% end %>
-			</div>
+			<% if user_signed_in? %>
+				<div class="starter-template">
+				  <hr>
+				  <small>You're logged in as <strong><%= current_user.email %></strong>. <%= link_to "Sign out?", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></small>
+				</div>
+			<% end %>
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -62,6 +61,6 @@
     	<!-- Include all compiled plugins (below), or include individual files as needed -->
     	<script src="/assets/javascripts/bootstrap.min.js"></script>
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
