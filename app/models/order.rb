@@ -7,6 +7,11 @@ class Order < ActiveRecord::Base
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
+
+  def total_qty
+    order_items.collect { |oi| oi.valid? ? (oi.quantity) : 0 }.sum
+  end
+
 private
   def set_order_status
     self.order_status_id = 1
