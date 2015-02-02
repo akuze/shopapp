@@ -1,51 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shopping Cart: Log in</title>
+<div class="container">
+  <h2>Please log in</h2>
 
-    <!-- Bootstrap -->
-    <link href="/assets/bootstrap.min.css" media="all" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="custom.css" rel="stylesheet">
-  </head>
-
-  <body>
-    <div class="container">
-      <h2>Log in</h2>
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-
-        <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end -%>
-
-        <div class="actions">
-          <%= f.submit "Log in" %>
-        </div>
-      <% end %>
-
-      <%= render "users/shared/links" %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, placeholder:"E-mail address" %>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/assets/bootstrap.min.js"></script>
-  </body>
-</html>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "off", placeholder:"Password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="checkbox">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in", class: "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+</div>
