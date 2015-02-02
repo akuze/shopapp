@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row">
+		<hr>
+		<h4><%= product.name %></h4>
+		<p><small><%= product.description %></small></p>
+		<%= form_for order_item, remote: true do |f| %>
+			<p>Unit Price: <%= number_to_currency order_item.unit_price %></p>
+			<p>Quantity: <%= order_item.quantity %></p>
+			<p>Total Price for this item: <span style="color: green"><%= number_to_currency order_item.total_price %></span></p>
+		<% end %>
+	</div>
+</div>

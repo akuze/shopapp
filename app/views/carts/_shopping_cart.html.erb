@@ -18,4 +18,7 @@
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
   <% end %>
+  <p class="text-right">You have <%= current_order.order_items.size %> item(s) in your cart.</p>
+  <h3 class="text-right">Subtotal: <span style="color: green"><%= number_to_currency current_order.subtotal %></span></h3>
+  <p class="text-right"><a type="button" class="btn btn-success btn-lg" href="\check_out\form.html" role="button">Proceed to Check Out</a></p>
 <% end %>
