@@ -4,18 +4,14 @@
 		<meta charset="utf-8">
    		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<link rel="icon" href="../../favicon.ico">
 
 	 	<title>Nuggalopes and Friends</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 
-		<!-- Bootstrap -->
-    	<link href="vendor/assets/stylesheets/bootstrap.min.css" media="all" rel="stylesheet">
-
-    	<!-- Custom styles for this template -->
-    	<link href="app/assets/stylesheets/custom.css" rel="stylesheet">
+		<link href="/assets/bootstrap.min.css" rel="stylesheet">
+		<link href="/assets/custom.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -48,19 +44,19 @@
 
 		<div class="container">
 			<%= yield %>
+		</div>
+
+		<footer class="footer">
 			<% if user_signed_in? %>
 				<div class="starter-template">
 				  <hr>
 				  <small>You're logged in as <strong><%= current_user.email %></strong>. <%= link_to "Sign out?", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></small>
 				</div>
 			<% end %>
-		</div>
-
+		</footer>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     	<!-- Include all compiled plugins (below), or include individual files as needed -->
-    	<script src="/assets/javascripts/bootstrap.min.js"></script>
-    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    	<script src="/assets/bootstrap.min.js"></script>
 	</body>
 </html>
