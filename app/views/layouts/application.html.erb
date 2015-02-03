@@ -57,7 +57,7 @@
 					<% if user_signed_in? %>
 						&nbsp;|&nbsp;&nbsp;<%= link_to "#{current_order.order_items.size} Item(s) in Your Cart ( #{number_to_currency current_order.subtotal} )", cart_path %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "Sign out?", destroy_user_session_path, method: :delete %>
 					<% else %>
-						|&nbsp;<%= link_to "Log in", new_user_session_path %> | <%= link_to "Sign up", new_user_registration_path %>
+						|&nbsp;<%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Log in", new_user_session_path %>
 					<% end %>
 				</small>
 			</div>
