@@ -4,6 +4,6 @@ class CheckOutController < ApplicationController
   end
 
   def complete
-  	@order_items = current_order.order_items
+  	@order_items = current_order.order_items.destroy_all
   end
 end

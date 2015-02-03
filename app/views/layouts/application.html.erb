@@ -34,7 +34,7 @@
 							<% else %>
 								<li><a href="/#">Home</a></li>
 								<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-								<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+								<li><%= link_to "Log in", new_user_session_path, :class => 'navbar-link'  %></li>
 							<% end %>
 						</ul>
 					</nav>
@@ -47,12 +47,20 @@
 		</div>
 
 		<footer class="footer">
-			<% if user_signed_in? %>
-				<div class="starter-template">
-				  <hr>
-				  <small>You're logged in as <strong><%= current_user.email %></strong>. <%= link_to "Sign out?", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></small>
-				</div>
-			<% end %>
+			<div class="starter-template">
+				<hr>
+				<small>
+					<% if user_signed_in? %>
+						You're logged in as <strong><%= current_user.email %></strong>.<br><br>
+					<% end %>
+					<%= link_to "Store Home", '\#' %>
+					<% if user_signed_in? %>
+						&nbsp;|&nbsp;&nbsp;<%= link_to "#{current_order.order_items.size} Item(s) in Your Cart ( #{number_to_currency current_order.subtotal} )", cart_path %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "Sign out?", destroy_user_session_path, method: :delete %>
+					<% else %>
+						|&nbsp;<%= link_to "Log in", new_user_session_path %> | <%= link_to "Sign up", new_user_registration_path %>
+					<% end %>
+				</small>
+			</div>
 		</footer>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
