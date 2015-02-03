@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   get 'check_out/form'
   get 'check_out/complete'
 
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
   resources :check_out, only: [:form, :complete]
 
   devise_for :users
-  get 'welcome/index'
-
-  root 'welcome#index'
+  
+  root to: 'welcome#index'
 end

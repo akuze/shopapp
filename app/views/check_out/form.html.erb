@@ -1,6 +1,5 @@
-<h1>Check Out</h1>
-
 <div class="container">
+	<h3 class="text-center">Check Out</h3>
 	<% if !@order_item.nil? && @order_item.errors.any? %>
 	  <div class="alert alert-danger">
 	    <ul>
@@ -17,7 +16,8 @@
 	    </p>
 	  </div>
 	<% else %>
-	  <p>Hello, <strong><%= current_user.email %></strong>! Here is a summary of your order:</p>
+	  <p>Hello, <strong><%= current_user.email %></strong>!
+	  	<br>Here is a summary of your order:</p>
 	  <% @order_items.each do |order_item| %>
 	    <%= render 'check_out/check_out_row', product: order_item.product, order_item: order_item, show_total: true %>
 	  <% end %>
@@ -46,9 +46,14 @@
 	  	<input type="text" size="25">
 		<br>
 	  </form>
-
 	  <hr>
-	  <p class="text-center"><a type="button" class="btn btn-success btn-lg" href="\check_out\complete.html" role="button">Complete Check Out</a></p>
+	  
+	  <div class="text-center">
+	  	<%= button_to "Complete Order",  { action: "complete", id: @check_out, method: :complete, data: { confirm: "Are you sure?" } }, :method => :get, class: "btn btn-success" %>
+	  	<br>
+	  	<%= link_to "Click here to return to the shop.", 'products#index' %>
+	  </div>
+	   
 	<% end %>
 </div>
 
